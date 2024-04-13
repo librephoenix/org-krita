@@ -78,6 +78,11 @@
 (defconst org-krita-dir (file-name-directory load-file-name)
   "Base directory for package.")
 
+(defvar org-krita-extract-filename "mergedimage.png"
+  "Filename to extract from krita file for image preview.
+Set to \"mergedimage.png\" for highest fidelity or \"preview.png\"
+for better performance (esp. for large images).")
+
 (defun org-krita-resource (file)
   "Return full path of a resource FILE."
   (expand-file-name file (file-name-as-directory (concat org-krita-dir "resources"))))
@@ -113,7 +118,7 @@ Argument _BACKEND refers to export backend."
   "Extract png from given KRA-PATH and return data."
   (with-temp-buffer
     (set-buffer-multibyte nil)
-    (archive-zip-extract (expand-file-name kra-path) "mergedimage.png")
+    (archive-zip-extract (expand-file-name kra-path) org-krita-extract-png)
     (buffer-string)))
 
 (defun org-krita-get-links ()
