@@ -149,15 +149,15 @@ Argument _BACKEND refers to export backend."
     (unless (alist-get kra-path org-krita-watchers nil nil #'string-equal)
       (push (cons kra-path desc) org-krita-watchers))))
 
-(defun org-krita-edit (path &optional full-mode)
-  "Edit given PATH in krita canvasonly mode.
+(defun org-krita-edit (path &optional canvasonly-mode)
+  "Edit given PATH in krita.
 
-If FULL-MODE is not null, run full krita."
+If CANVASONLY-MODE is not null, run krita in canvasonly mode."
   (let ((kra-path (expand-file-name path)))
     (when (f-exists-p kra-path)
-      (if full-mode
-          (call-process org-krita-executable nil 0 nil kra-path)
-        (call-process org-krita-executable nil 0 nil "--canvasonly" "--nosplash" kra-path))
+      (if canvasonly-mode
+          (call-process org-krita-executable nil 0 nil "--canvasonly" "--nosplash" kra-path)
+        (call-process org-krita-executable nil 0 "--nosplash" nil kra-path))
       (org-krita-add-watcher kra-path))))
 
 (defun org-krita-hide-link (link)
