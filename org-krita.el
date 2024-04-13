@@ -83,6 +83,9 @@
 Set to \"mergedimage.png\" for highest fidelity or \"preview.png\"
 for better performance (esp. for large images).")
 
+(defvar org-krita-scale 1
+  "Scale factor to apply to krita image previews from org-krita.")
+
 (defun org-krita-resource (file)
   "Return full path of a resource FILE."
   (expand-file-name file (file-name-as-directory (concat org-krita-dir "resources"))))
@@ -167,7 +170,7 @@ If FULL-MODE is not null, run full krita."
          (end (org-element-property :end link))
          (overlay (make-overlay start end))
          (kra-path (org-element-property :path link)))
-    (overlay-put overlay 'display (create-image (org-krita-extract-png kra-path) 'png t))
+    (overlay-put overlay 'display (create-image (org-krita-extract-png kra-path) 'png t :scale org-krita-scale))
     (push (cons kra-path overlay) org-krita-overlays)))
 
 (defun org-krita-hide-all ()
