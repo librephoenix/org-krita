@@ -121,7 +121,7 @@ Argument _BACKEND refers to export backend."
   "Extract png from given KRA-PATH and return data."
   (with-temp-buffer
     (set-buffer-multibyte nil)
-    (archive-zip-extract (expand-file-name kra-path) org-krita-extract-png)
+    (archive-zip-extract (expand-file-name kra-path) org-krita-extract-filename)
     (buffer-string)))
 
 (defun org-krita-get-links ()
