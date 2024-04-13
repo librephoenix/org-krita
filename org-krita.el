@@ -3,9 +3,10 @@
 ;; Copyright (c) 2020 Abhinav Tushar
 
 ;; Author: Abhinav Tushar <abhinav@lepisma.xyz>
+;; Forked by: Emmet (LibrePhoenix) <emmet@librephoenix.com>
 ;; Version: 0.2.1
 ;; Package-Requires: ((emacs "26") (f "0.20.0") (org "9.3"))
-;; URL: https://github.com/lepisma/org-krita
+;; URL: https://github.com/librephoenix/org-krita
 
 ;;; Commentary:
 
